@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante - Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .admin-section {
+            margin-top: 20px;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+        }
+
+        .btn-delete:hover {
+            background-color: #e53935;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination button:hover {
+            background-color: #f4f4f4;
+        }
+
+        .pagination button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="admin-section" class="admin-section">
+        <h3>Benvenuto, Admin!</h3>
+        <p>Qui puoi gestire gli ordini, gli utenti e altro.</p>
+        <h3>Ordini:</h3>
+        <input class="input" type="text" id="search-order" placeholder="Cerca per numero tavolo o nome cliente" oninput="filterOrders()">
+        <button class="btn btn-delete" onclick="clearAllOrders()">Elimina Tutti gli Ordini</button>
+        <ul id="order-list"></ul>
+        <div class="pagination" id="pagination"></div>
+    </div>
+
+    <script>
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        const ordersPerPage = 5;
+        let currentPage = 1;
+
+        // Mostra gli ordini
+        function showOrders(page = 1) {
+            currentPage = page;
+            const orderList = document.getElementById("order-list");
+            orderList.innerHTML = "";
+            const start = (page - 1) * ordersPerPage;
+            const end = start + ordersPerPage;
+            const paginatedOrders = orders.slice(start, end);
+
+            paginatedOrders.forEach(function(order, index) {
+                const li = document.createElement("li");
+                li.className = "order-item";
+                li.innerHTML = `
+                    Tavolo ${order.tableNumber} (${order.customerName}): ${order.items.map(item => `${item.item} - €${item.price}`).join(', ')} - Totale: €${order.total} - Stato: ${order.status}
+                    <div class="order-actions">
+                        <button class="btn" onclick="updateOrderStatus(${start + index}, 'Completato')">Completa</button>
+                        <button class="btn btn-delete" onclick="deleteOrder(${start + index})">Elimina</button>
+                    </div>
+                `;
+                orderList.appendChild(li);
+            });
+
+            showPagination();
+        }
+
+        // Mostra la paginazione
+        function showPagination() {
+            const pagination = document.getElementById("pagination");            pagination.innerHTML = "";            const pageCount = Math.ceil(orders.length / ordersPerPage);
+
+            for (let i = 1; i <= pageCount; i++) {
+                const button = document.createElement("button");
+                button.innerText = i;
+                button.className = i === currentPage ? "active" : "";
+                button.onclick = () => showOrders(i);
+                pagination.appendChild(button);
+            }
+        }
+
+        // Filtra gli ordini
+        function filterOrders() {
+            const searchTerm = document.getElementById("search-order").value.toLowerCase();
+            const filteredOrders = orders.filter(order => 
+                order.tableNumber.toString().includes(searchTerm) || 
+                order.customerName.toLowerCase().includes(searchTerm)
+            );
+            const orderList = document.getElementById("order-list");
+            orderList.innerHTML = "";
+            filteredOrders.forEach(function(order, index) {
+                const li = document.createElement("li");
+                li.className = "order-item";
+                li.innerHTML = `
+                    Tavolo ${order.tableNumber} (${order.customerName}): ${order.items.map(item => `${item.item} - €${item.price}`).join(', ')} - Totale: €${order.total} - Stato: ${order.status}
+                    <div class="order-actions">
+                        <button class="btn" onclick="updateOrderStatus(${index}, 'Completato')">Completa</button>
+                        <button class="btn btn-delete" onclick="deleteOrder(${index})">Elimina</button>
+                    </div>
+                `;
+                orderList.appendChild(li);
+            });
+        }
+
+        // Aggiorna lo stato dell'ordine
+        function updateOrderStatus(index, status) {
+            orders[index].status = status;
+            localStorage.setItem('orders', JSON.stringify(orders));
+            showOrders(currentPage);
+        }
+
+        // Elimina un ordine
+        function deleteOrder(index) {
+            orders.splice(index, 1);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            showOrders(currentPage);
+        }
+
+        // Elimina tutti gli ordini
+        function clearAllOrders() {
+            orders = [];
+            localStorage.setItem('orders', JSON.stringify(orders));
+            showOrders();
+        }
+
+        showOrders();
+    </script>
+</body>
+</html>
