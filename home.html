@@ -1,429 +1,292 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المعهد الثقافي الإسلامي - إيطاليا</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <style>
-    /* إعادة تعيين الأساسيات */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #394959;
-      color: #333;
-      line-height: 1.6;
-    }
-    
-    /* تنسيق شريط التنقل (Navbar) */
-    .navbar {
-      background: #003399;
-      color: #fff;
-      padding: 10px 20px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-    
-    .navbar.scrolled {
-      padding: 5px 20px;
-      background: #002266;
-    }
-    
-    .navbar .nav-logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
-    
-    .navbar .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-    
-    .navbar .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-    
-    .navbar .nav-links a:hover {
-      background: #008000;
-    }
-    
-    /* زر تغيير اللغة داخل شريط التنقل */
-    .lang-toggle {
-      background: #005700;
-      border: none;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.3s;
-    }
-    
-    .lang-toggle:hover {
-      background: #007a00;
-    }
-    
-    /* أيقونة الهامبرغر للهواتف */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: #fff;
-      margin: 4px;
-      transition: all 0.3s ease;
-    }
-    
-    /* قائمة الهاتف المحمولة (Dropdown) */
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background: #003399;
-      position: fixed;
-      top: 60px;
-      width: 100%;
-      left: 0;
-      padding: 10px 0;
-      max-height: calc(100vh - 60px);
-      overflow-y: auto;
-      z-index: 1000;
-    }
-    
-    .mobile-menu a {
-      padding: 10px 20px;
-      text-decoration: none;
-      color: #fff;
-      font-size: 18px;
-      transition: background 0.3s;
-    }
-    
-    .mobile-menu a:hover {
-      background: #008000;
-    }
-    
-    /* تنسيق المحتوى */
-    .container {
-      max-width: 900px;
-      margin: 80px auto 100px auto; /* يراعى المسافة بسبب شريط التنقل الثابت والتذييل */
-      padding: 20px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    
-    .container.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    h1, h2 {
-      color: #003399;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    p {
-      font-size: 18px;
-      color: green;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .image {
-      display: block;
-      max-width: 600px;
-      width: 100%;
-      margin: 20px auto;
-      border-radius: 10px;
-    }
-    
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 10px;
-    }
-    
-    /* زر الرجوع للأعلى (سهم) */
-    #scrollTop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #008000;
-      color: #fff;
-      border: none;
-      padding: 15px;
-      font-size: 24px;
-      cursor: pointer;
-      border-radius: 50%;
-      display: none;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      z-index: 1001;
-      transition: background 0.3s;
-    }
-    
-    #scrollTop:hover {
-      background: #005700;
-    }
-    
-    /* تنسيق التذييل (Footer) */
-    .footer {
-      background: #003399;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
-      bottom: 0;
-      width: 100%;
-    }
-    
-    .footer p {
-      font-size: 16px;
-    }
 
-    .vianumero {
-      font-size: 16px;
-      color: white;
-    }
-    
-    /* استجابة (Responsive) لشاشات الهواتف */
-    @media (max-width: 768px) {
-      .navbar .nav-links {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      /* عند تفعيل القائمة المحمولة */
-      .mobile-menu.active {
-        display: flex;
-      }
-    }
-  </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Del Vento Caffe - Ristorante</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="shortcut icon" href="img/icon del vento.png" type="image/png">
+    <link rel="stylesheet" href="Del vento.css">
+    <style>
+        /* ألوان الموقع */
+        body {
+            font-family: "serif";
+            background-color: #333232;
+            color: white;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.738);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .nav-item a {
+            font-weight: bold;
+            color: white !important;
+            transition: 0.3s;
+        }
+
+        .nav-item a:hover {
+            color: #ffc107 !important;
+        }
+
+        .header-area {
+            position: fixed;
+            top: -0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .header-times {
+            text-align: right;
+            font-size: 14px;
+            margin-left: 20px;
+            color: #ffc107;
+        }
+
+        .header-times i {
+            color: #d32f2f;
+        }
+
+        /* زر القائمة الجانبية (الهامبرغر) */
+        .navbar-toggler {
+            background: transparent;
+            border: none;
+            outline: none;
+            position: relative;
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: #ffc107;
+            border-radius: 5px;
+            transition: all 0.4s ease;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .hamburger span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .navbar-toggler[aria-expanded="true"] .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .hamburger span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* لتنسيق الصور والنصوص */
+        .food-slider-container {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row-reverse;
+            /* الصورة على اليمين والنص على اليسار */
+        }
+
+        .food-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .food-item {
+            flex: 0 0 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .food-image {
+            width: 50%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .food-text {
+            font-size: 1.5em;
+            margin-left: 20px;
+            color: white;
+        }
+
+        /* أزرار التنقل */
+        button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .dropdown-menu {
+            background-color: rgba(0, 0, 0, 0.897);
+            border: solid 1px #ffc107;
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- شريط التنقل -->
-  <nav class="navbar">
-    <div class="nav-logo">المعهد الثقافي الإسلامي</div>
-    <div class="nav-links">
-      <a href="#home" id="nav-home">الرئيسية</a>
-      <a href="#prayer" id="nav-prayer">مواقيت الصلاة</a>
-      <a href="#hajj" id="nav-hajj">الحج والعمرة</a>
-      <a href="#location" id="nav-location">الموقع</a>
-      <button class="lang-toggle" id="langToggle">IT/AR</button>
+    <!--pga 1 bar & img testo-->
+    <div class="bar&img" style="background-image:url(img/background.jpg);">
+        <header class="header-area">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/Del Vento.png" alt="Logo">
+                    </a>
+
+
+                    <!-- زر القائمة الجانبية -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+
+                    <!-- القائمة -->
+                    <div class="collapse navbar-collapse" id="navbarNav" style="font-size: 18px;">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a class="nav-link" href="#">DEL VENTO</a></li>
+                            <li class="nav-item dropdown">
+
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">IL MENU</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">PIZZA</a></li>
+                                    <li><a class="dropdown-item" href="#">DOLCI</a></li>
+                                    <li><a class="dropdown-item" href="#">BEVANDE</a></li>
+                                    <li><a class="dropdown-item" href="#">ZUPPE</a></li>
+                                    <li><a class="dropdown-item" href="#">ANTIPASTI</a></li>
+                                    <li><a class="dropdown-item" href="#">PIATTI PRINCIPALI</a></li>
+                                    <li><a class="dropdown-item" href="#">PIATTI VEGETARIANI</a></li>
+                                    <li><a class="dropdown-item" href="#">CONTORNI</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                    data-bs-toggle="dropdown">CHI SIAMO</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">IL RISTORANTE</a></li>
+                                    <li><a class="dropdown-item" href="#">Il NOSTRO TEAM</a></li>
+                                    <li><a class="dropdown-item" href="#">PRENOTAZIONE</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#">GALLERIA</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">CONTATTI</a></li>
+                        </ul>
+
+                        <!-- وقت العمل -->
+                        <div class="header-times">
+                            <i class="fa fa-clock"></i>
+                            <span>Orario di apertura | Tutti i Giorni </span>
+                            <p>10:00 - 15:00 | 18:30 - 00:00</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!--img per body con testo-->
+        <h1 class="text-center" style="color: aqua; text-align: center; top: 20px;">BENVENUTI AL DEL VENTO</h1>
+
+        <!--img per body con testo-->
+        <div class="food-slider-container">
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+
+            <div class="food-slider">
+                <div class="food-item">
+                    <img src="img/Pizza.png" alt="Pizza" class="food-image">
+                    <p class="food-text">PIZZA<br> Mozzarella, pomodoro, Funghi</p>
+                </div>
+                <div class="food-item">
+                    <img src="img/shish.png" alt="Pasta" class="food-image">
+                    <p class="food-text">PASTA<br> Sugo al pomodoro, Basilico</p>
+                </div>
+                <div class="food-item">
+                    <img src="img/Kofta.png" alt="Dolci" class="food-image">
+                    <p class="food-text">DOLCI<br> Tiramisu, Panna cotta</p>
+                </div>
+            </div>
+
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
     </div>
-    <!-- أيقونة الهامبرغر للهواتف -->
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </nav>
 
-  <!-- القائمة المحمولة (Mobile Menu) -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#home" id="mobile-home" onclick="toggleMobileMenu()">الرئيسية</a>
-    <a href="#prayer" id="mobile-prayer" onclick="toggleMobileMenu()">مواقيت الصلاة</a>
-    <a href="#hajj" id="mobile-hajj" onclick="toggleMobileMenu()">الحج والعمرة</a>
-    <a href="#location" id="mobile-location" onclick="toggleMobileMenu()">الموقع</a>
-    <a href="javascript:void(0)" id="mobileLangToggle" onclick="toggleLanguage()">IT/AR</a>
-  </div>
 
-  <!-- المحتوى الرئيسي -->
-  <section id="home" class="container">
-    <img src="https://www.icislam.it/immagini/hal.png" alt="شعار المعهد" class="image">
-    <h1 id="title">المعهد الثقافي الإسلامي</h1>
-    <p id="bismillah">بسم الله الرحمن الرحيم</p>
-    <p id="in-nome">In nome di Allah il Compassionevole il Misericordioso</p>
-    <img src="immagini/salat_eid.jpg" alt="صلاة العيد" class="image">
-  </section>
 
-  <section id="prayer" class="container">
-    <h2 id="prayer-times">مواقيت الصلاة - ميلانو</h2>
-    <iframe src="https://mawaqit.net/ar/w/ici-milano?showOnly5PrayerTimes=0"></iframe>
-    <p><a href="https://mawaqit.net/it/ici-milano" target="_blank" id="view-full-times">عرض المواقيت الكاملة</a></p>
-  </section>
 
-  <section id="hajj" class="container">
-    <h2 id="hajj-title">الحج والعمرة</h2>
-    <p><a href="https://fm.aruba.it/aa85fea17a/php/connector.minimal.php?cmd=file&target=f1_SW1tYWdpbmUgMjAyMi0wOC0wNiAxNDU4MTMucG5n" target="_blank" id="hajj-link">
-      اضغط هنا لمزيد من المعلومات</a></p>
-  </section>
 
-  <section id="location" class="container">
-    <h2 id="location-title">موقعنا</h2>
-    <p><a href="https://goo.gl/maps/UquVqxcscfPZhjAYA" target="_blank" id="location-link">نحن هنا</a></p>
-  </section>
 
-  <!-- زر الرجوع للأعلى -->
-  <button id="scrollTop" onclick="scrollToTop()">▲</button>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Del vento.js"></script>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.food-item');
+        const totalSlides = slides.length;
 
-  <!-- التذييل -->
-  <footer class="footer">
-    <p class="vianumero">Viale Edoardo Jenner, 50, 20159 Milano MI | 📞: 0266802999</p>
-  </footer>
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1; // العودة للصورة الأخيرة
+            }
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0; // العودة للصورة الأولى
+            }
 
-  <script>
-    // نصوص اللغة العربية والإيطالية
-    const translations = {
-      it: {
-        title: "Istituto Culturale Islamico",
-        bismillah: "بسم الله الرحمن الرحيم",
-        inNome: "In nome di Allah il Compassionevole il Misericordioso",
-        prayerTimes: "Orari di Preghiera - Milano",
-        viewFullTimes: "Visualizza gli orari completi",
-        hajjTitle: "Hajj e Umrah",
-        hajjLink: "Clicca qui per maggiori informazioni",
-        locationTitle: "La Nostra Posizione",
-        locationLink: "Siamo qui",
-        navHome: "Home",
-        navPrayer: "Orari di Preghiera",
-        navHajj: "Hajj e Umrah",
-        navLocation: "Posizione",
-        mobileHome: "Home",
-        mobilePrayer: "Orari di Preghiera",
-        mobileHajj: "Hajj e Umrah",
-        mobileLocation: "Posizione",
-      },
-      ar: {
-        title: "المعهد الثقافي الإسلامي",
-        bismillah: "بسم الله الرحمن الرحيم",
-        inNome: "In nome di Allah il Compassionevole il Misericordioso",
-        prayerTimes: "مواقيت الصلاة - ميلانو",
-        viewFullTimes: "عرض المواقيت الكاملة",
-        hajjTitle: "الحج والعمرة",
-        hajjLink: "اضغط هنا لمزيد من المعلومات",
-        locationTitle: "موقعنا",
-        locationLink: "نحن هنا",
-        navHome: "الرئيسية",
-        navPrayer: "مواقيت الصلاة",
-        navHajj: "الحج والعمرة",
-        navLocation: "الموقع",
-        mobileHome: "الرئيسية",
-        mobilePrayer: "مواقيت الصلاة",
-        mobileHajj: "الحج والعمرة",
-        mobileLocation: "الموقع",
-      },
-    };
-
-    // عناصر الصفحة التي سيتم تحديثها
-    const elementsToTranslate = {
-      title: document.getElementById("title"),
-      bismillah: document.getElementById("bismillah"),
-      inNome: document.getElementById("in-nome"),
-      prayerTimes: document.getElementById("prayer-times"),
-      viewFullTimes: document.getElementById("view-full-times"),
-      hajjTitle: document.getElementById("hajj-title"),
-      hajjLink: document.getElementById("hajj-link"),
-      locationTitle: document.getElementById("location-title"),
-      locationLink: document.getElementById("location-link"),
-      navHome: document.getElementById("nav-home"),
-      navPrayer: document.getElementById("nav-prayer"),
-      navHajj: document.getElementById("nav-hajj"),
-      navLocation: document.getElementById("nav-location"),
-      mobileHome: document.getElementById("mobile-home"),
-      mobilePrayer: document.getElementById("mobile-prayer"),
-      mobileHajj: document.getElementById("mobile-hajj"),
-      mobileLocation: document.getElementById("mobile-location"),
-    };
-
-    // دالة لتحديث النصوص بناءً على اللغة
-    function updateLanguage(lang) {
-      const texts = translations[lang];
-      for (const key in elementsToTranslate) {
-        if (elementsToTranslate[key]) {
-          elementsToTranslate[key].textContent = texts[key];
+            const foodSlider = document.querySelector('.food-slider');
+            foodSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
-      }
-      document.documentElement.lang = lang;
-      localStorage.setItem("language", lang);
-    }
 
-    // تغيير اللغة
-    function toggleLanguage() {
-      const currentLang = document.documentElement.lang;
-      const newLang = currentLang === "it" ? "ar" : "it";
-      updateLanguage(newLang);
-      langToggle.textContent = newLang === "it" ? "IT/AR" : "AR/IT";
-      mobileLangToggle.textContent = newLang === "it" ? "IT/AR" : "AR/IT";
-    }
-
-    // تحميل اللغة المفضلة من localStorage
-    const savedLang = localStorage.getItem("language") || "it";
-    updateLanguage(savedLang);
-
-    // تفعيل/إخفاء القائمة المحمولة عند النقر على أيقونة الهامبرغر
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
-    
-    function toggleMobileMenu() {
-      mobileMenu.classList.remove('active');
-    }
-    
-    // زر الرجوع للأعلى
-    window.addEventListener("scroll", function() {
-      const scrollTopBtn = document.getElementById("scrollTop");
-      if (window.pageYOffset > 200) {
-        scrollTopBtn.style.display = "block";
-      } else {
-        scrollTopBtn.style.display = "none";
-      }
-    });
-    
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    // تأثير التمرير لشريط التنقل
-    window.addEventListener("scroll", function() {
-      const navbar = document.querySelector('.navbar');
-      if (window.pageYOffset > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // تأثير ظهور العناصر عند التمرير
-    const containers = document.querySelectorAll('.container');
-    window.addEventListener('scroll', () => {
-      containers.forEach(container => {
-        const containerTop = container.getBoundingClientRect().top;
-        if (containerTop < window.innerHeight - 100) {
-          container.classList.add('visible');
-        }
-      });
-    });
-  </script>
-
+        // تغيير الصور كل 3 ثواني تلقائياً
+        setInterval(() => {
+            changeSlide(1);
+        }, 3000);
+    </script>
 </body>
+
 </html>
