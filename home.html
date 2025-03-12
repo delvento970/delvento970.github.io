@@ -7,62 +7,85 @@
     <title>Del Vento Caffe - Ristorante</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon" href="img/icon del vento.png" type="image/png">
-    <link rel="stylesheet" href="Del vento.css">
+
     <style>
-        /* ألوان الموقع */
-        body {
-            font-family: "serif";
-            background-color: #333232;
-            color: white;
+        /* Colori principali */
+        :root {
+            --primary-color: #ffc107;
+            --secondary-color: #d32f2f;
+            --dark-bg: #333232;
+            --text-color: #ffffff;
         }
 
+        body {
+            font-family: "Georgia", serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            padding-top: 80px;
+        }
+
+        /* Navbar */
         .navbar {
-            background: rgba(0, 0, 0, 0.738);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.750);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px #ffc1077b;
+            height: 80px;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
         }
 
         .navbar-brand img {
             height: 40px;
+            transition: transform 0.3s;
+        }
+
+        .navbar-brand:hover img {
+            transform: scale(1.05);
         }
 
         .nav-item a {
-            font-weight: bold;
-            color: white !important;
-            transition: 0.3s;
+            font-weight: 600;
+            color: var(--text-color) !important;
+            transition: all 0.3s;
+            position: relative;
         }
 
         .nav-item a:hover {
-            color: #ffc107 !important;
+            color: var(--primary-color) !important;
         }
 
-        .header-area {
-            position: fixed;
-            top: -0;
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
             left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-item a:hover::after {
             width: 100%;
-            z-index: 1000;
-            font-size: 20px;
-            text-align: center;
         }
 
-        .header-times {
-            text-align: right;
-            font-size: 14px;
-            margin-left: 20px;
-            color: #ffc107;
-        }
-
-        .header-times i {
-            color: #d32f2f;
-        }
-
-        /* زر القائمة الجانبية (الهامبرغر) */
+        /* Hamburger Menu */
         .navbar-toggler {
             background: transparent;
-            border: none;
+            border: 1px solid rgba(255, 193, 7, 0.5) !important;
             outline: none;
             position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
         }
 
         .hamburger {
@@ -95,89 +118,298 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* لتنسيق الصور والنصوص */
+        /* Collapsed Menu Styling */
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                background: rgba(0, 0, 0, 0.85);
+                backdrop-filter: blur(15px);
+                margin: 15px -12px;
+                border-radius: 10px;
+                padding: 15px;
+                border: 1px solid rgba(255, 193, 7, 0.2);
+            }
+
+            .navbar-nav {
+                padding: 10px;
+            }
+
+            .nav-item {
+                margin: 8px 0;
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                background: rgba(0, 0, 0, 0.85);
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba(255, 193, 7, 0.3);
+            }
+
+            .dropdown-item {
+                color: var(--text-color) !important;
+                transition: all 0.3s;
+            }
+
+            .dropdown-item:hover {
+                background: rgba(255, 193, 7, 0.1);
+                color: var(--primary-color) !important;
+            }
+
+            .dropdown-divider {
+                border-color: rgba(255, 193, 7, 0.3);
+            }
+
+            .header-times {
+                justify-content: center;
+                margin-top: 1rem;
+                padding: 10px;
+                border-top: 1px solid rgba(255, 193, 7, 0.2);
+            }
+        }
+
+        /* Slider */
         .food-slider-container {
             position: relative;
-            width: 80%;
-            margin: auto;
+            width: 90%;
+            margin: 2rem auto;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row-reverse;
-            /* الصورة على اليمين والنص على اليسار */
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .food-slider {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .food-item {
             flex: 0 0 100%;
+            min-width: 100%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            transition: all 0.3s;
+            flex-direction: row-reverse;
         }
 
         .food-image {
-            width: 50%;
-            height: auto;
+            width: 45%;
             border-radius: 10px;
+            object-fit: cover;
         }
 
         .food-text {
-            font-size: 1.5em;
-            margin-left: 20px;
-            color: white;
+            padding: 0 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* أزرار التنقل */
-        button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 20px;
-            font-size: 2em;
-            cursor: pointer;
+        .food-title {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: "Playfair Display", serif;
+        }
+
+        .food-desc {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* Slider Buttons */
+        .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary-color);
+            color: var(--text-color);
+            padding: 1rem 1.3rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
         }
 
-        button:hover {
-            background-color: rgba(0, 0, 0, 0.7);
+        .slider-btn:hover {
+            background: var(--primary-color);
+            color: var(--dark-bg);
         }
 
         .prev {
-            left: 0;
+            left: 2rem;
         }
 
         .next {
-            right: 0;
+            right: 2rem;
         }
 
-        .dropdown-menu {
-            background-color: rgba(0, 0, 0, 0.897);
-            border: solid 1px #ffc107;
+        /* Orari */
+        .header-times {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .header-times i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .navbar {
+                height: 70px;
+            }
+
+            .food-item {
+                flex-direction: column;
+                padding: 1.5rem;
+                text-align: center;
+            }
+
+            .food-image {
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 1.5rem;
+            }
+
+            .food-text {
+                padding: 0 1rem;
+            }
+
+            .food-title {
+                font-size: 2.5rem;
+            }
+
+            .slider-btn {
+                padding: 0.8rem 1rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .food-title {
+                font-size: 2rem;
+            }
+
+            .food-desc {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animation */
+        .navbar-collapse.collapsing,
+        .navbar-collapse.show {
+            animation: menuFade 0.4s ease;
+        }
+
+        @keyframes menuFade {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* أنماط أيقونات الوسائط الاجتماعية */
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-left: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--primary-color) !important;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none !important;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        /* تعديل تأثير الـ hover العام */
+        .social-link:hover {
+            color: var(--text-color) !important;
+            /* تغيير لون النص عند الـ hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+
+        /* ألوان خاصة بكل منصة عند الـ hover */
+        .social-link:hover .fa-tiktok {
+            color: #c6acac !important;
+        }
+
+        .social-link:hover .fa-instagram {
+            color: #E1306C !important;
+        }
+
+        .social-link:hover .fa-facebook-f {
+            color: #1877F2 !important;
+        }
+
+        .social-link:hover .fa-whatsapp {
+            color: #25D366 !important;
+        }
+
+        /* تعديلات للجوال */
+        @media (max-width: 992px) {
+            .social-icons {
+                justify-content: center;
+                margin: 1rem 0 0;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255, 193, 7, 0.2);
+                width: 100%;
+                order: 3;
+            }
+
+            .social-link {
+                font-size: 1.3rem;
+                width: 42px;
+                height: 42px;
+                background: rgba(0, 0, 0, 0.6);
+            }
+
+            .header-times {
+                border-top: 1px solid rgba(255, 193, 7, 0.2);
+                margin-top: 1rem;
+                padding-top: 1rem;
+            }
         }
     </style>
+
+
+
+
 </head>
 
 <body>
-
-    <!--pga 1 bar & img testo-->
-    <div class="bar&img" style="background-image:url(img/background.jpg);">
+    <div style="background-image: url(img/background.jpg);">
         <header class="header-area">
-            <nav class="navbar navbar-expand-lg navbar-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
                 <div class="container">
                     <a class="navbar-brand" href="#">
-                        <img src="img/Del Vento.png" alt="Logo">
+                        <img src="img/Del Vento.png" alt="Del Vento Logo">
                     </a>
 
-
-                    <!-- زر القائمة الجانبية -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <div class="hamburger">
@@ -187,15 +419,17 @@
                         </div>
                     </button>
 
-                    <!-- القائمة -->
-                    <div class="collapse navbar-collapse" id="navbarNav" style="font-size: 18px;">
-                        <ul class="navbar-nav mx-auto">
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
                             <li class="nav-item"><a class="nav-link" href="#">DEL VENTO</a></li>
                             <li class="nav-item dropdown">
-
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">IL MENU</a>
-                                <ul class="dropdown-menu">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    IL MENU
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="#">PIZZA</a></li>
+                                    <!-- (<li><hr class="dropdown-divider"></li>) * لي تقصيم ال(لي جعل كل واحده في قسم)-->
                                     <li><a class="dropdown-item" href="#">DOLCI</a></li>
                                     <li><a class="dropdown-item" href="#">BEVANDE</a></li>
                                     <li><a class="dropdown-item" href="#">ZUPPE</a></li>
@@ -207,54 +441,101 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
-                                    data-bs-toggle="dropdown">CHI SIAMO</a>
-                                <ul class="dropdown-menu">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    CHI SIAMO
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="#">IL RISTORANTE</a></li>
-                                    <li><a class="dropdown-item" href="#">Il NOSTRO TEAM</a></li>
+                                    <li><a class="dropdown-item" href="#">IL NOSTRO TEAM</a></li>
                                     <li><a class="dropdown-item" href="#">PRENOTAZIONE</a></li>
                                 </ul>
                             </li>
+
                             <li class="nav-item"><a class="nav-link" href="#">GALLERIA</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">CONTATTI</a></li>
                         </ul>
 
-                        <!-- وقت العمل -->
-                        <div class="header-times">
-                            <i class="fa fa-clock"></i>
-                            <span>Orario di apertura | Tutti i Giorni </span>
-                            <p>10:00 - 15:00 | 18:30 - 00:00</p>
+                        <!-- أضف هذا الجزء بعد القائمة وقبل أوقات العمل -->
+                        <div class="social-icons ms-lg-3">
+                            <!-- TikTok -->
+                            <a href="رابط_تيك_توك" target="_blank" class="social-link">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="رابط_انستجرام" target="_blank" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+
+                            <!-- Facebook -->
+                            <a href="رابط_فيسبوك" target="_blank" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/رقم_الهاتف" target="_blank" class="social-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+
+                        <div class="header-times ps-lg-3">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <div>Orario di apertura</div>
+                                <div>10:00 - 15:00 | 18:30 - 00:00</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
 
-        <!--img per body con testo-->
-        <h1 class="text-center" style="color: aqua; text-align: center; top: 20px;">BENVENUTI AL DEL VENTO</h1>
+        <main class="main-content">
+            <section class="hero-section text-center py-5">
+                <h1 class="display-3 mb-4" style="color: var(--primary-color);">BENVENUTI AL DEL VENTO</h1>
 
-        <!--img per body con testo-->
-        <div class="food-slider-container">
-            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <div class="food-slider-container" style="background-image: url(img/background.jpg);">
+                    <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
 
-            <div class="food-slider">
-                <div class="food-item">
-                    <img src="img/Pizza.png" alt="Pizza" class="food-image">
-                    <p class="food-text">PIZZA<br> Mozzarella, pomodoro, Funghi</p>
+                    <div class="food-slider">
+                        <div class="food-item">
+                            <img src="img/Pizza.png" class="food-image" alt="Pizza tradizionale">
+                            <div class="food-text">
+                                <h2 class="food-title">PIZZA</h2>
+                                <p class="food-desc">
+                                    Impasto lievitato 24 ore con pomodoro San Marzano DOP,
+                                    mozzarella di bufala campana e basilico fresco
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="food-item">
+                            <img src="img/shish.png" class="food-image" alt="Piatto di carne">
+                            <div class="food-text">
+                                <h2 class="food-title">KOFTA</h2>
+                                <p class="food-desc">
+                                    Carne di agnello macinata al coltello con spezie segrete,
+                                    servita con couscous alle verdure e salsa yogurt
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="food-item">
+                            <img src="img/paklava.png" class="food-image" alt="Dolce tradizionale">
+                            <div class="food-text">
+                                <h2 class="food-title">BAKLAVA</h2>
+                                <p class="food-desc">
+                                    Strati croccanti di pasta fillo con noci miste tostate,
+                                    miele di fiori d'arancio e cardamomo
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
                 </div>
-                <div class="food-item">
-                    <img src="img/shish.png" alt="Pasta" class="food-image">
-                    <p class="food-text">PASTA<br> Sugo al pomodoro, Basilico</p>
-                </div>
-                <div class="food-item">
-                    <img src="img/Kofta.png" alt="Dolci" class="food-image">
-                    <p class="food-text">DOLCI<br> Tiramisu, Panna cotta</p>
-                </div>
-            </div>
-
-            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-        </div>
-
+            </section>
+        </main>
     </div>
 
 
@@ -262,30 +543,214 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="image-section">
+        <div class="image-container">
+            <img src="img/Kofta.png" alt="Main Dish" class="main-dish-img">
+        </div>
+
+        <div class="content-section">
+            <div class="content-box">
+                <img src="img/shish.png" alt="Mashawi">
+                <p>Mashawi</p>
+            </div>
+
+            <div class="content-box">
+                <img src="img/t3meia.png" alt="Antipasti">
+                <p>Antipasti</p>
+            </div>
+
+            <div class="content-box">
+                <img src="img/foto.png" alt="Halawiat Arabi">
+                <p>Halawiat</p>
+            </div>
+
+            <div class="content-box">
+                <img src="img/pizza1.png" alt="Pizza">
+                <p>Pizza</p>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* تحسينات عامة */
+        .image-section {
+            background-color: #f8faf8;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom;
+            max-width: 600px;
+        }
+
+        .content-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 0px;
+            flex-wrap: wrap;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+            padding: 15px;
+            width: 150px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-box img {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .content-box p {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            border-bottom: 3px solid #0078ff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: var(--primary-color) !important;
+        }
+
+        @media (max-width: 768px) {
+            .image-container {
+                height: 200px;
+            }
+
+            .content-section {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                display: grid;
+            }
+
+            .content-box {
+                width: 100%;
+                max-width: 150px;
+                padding: 10px;
+            }
+
+            .content-box img {
+                max-width: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-section {
+                gap: 10px;
+            }
+
+            .content-box {
+                max-width: 120px;
+            }
+
+            .content-box img {
+                max-width: 60px;
+            }
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Del vento.js"></script>
     <script>
         let currentSlide = 0;
+        const slider = document.querySelector('.food-slider');
         const slides = document.querySelectorAll('.food-item');
         const totalSlides = slides.length;
 
-        function changeSlide(direction) {
-            currentSlide += direction;
-            if (currentSlide < 0) {
-                currentSlide = totalSlides - 1; // العودة للصورة الأخيرة
-            }
-            if (currentSlide >= totalSlides) {
-                currentSlide = 0; // العودة للصورة الأولى
-            }
-
-            const foodSlider = document.querySelector('.food-slider');
-            foodSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        // تغيير الصور كل 3 ثواني تلقائياً
-        setInterval(() => {
-            changeSlide(1);
-        }, 3000);
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        // Auto-scroll con pausa al hover
+        let autoSlide = setInterval(() => changeSlide(1), 3000);
+        slider.parentElement.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        slider.parentElement.addEventListener('mouseleave', () => {
+            autoSlide = setInterval(() => changeSlide(1), 3000);
+        });
+
+        // Gestione swipe per mobile
+        let touchStartX = 0;
+        slider.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        slider.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                changeSlide(diff > 0 ? -1 : 1);
+            }
+        });
     </script>
 </body>
 
