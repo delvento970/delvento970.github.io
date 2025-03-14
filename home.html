@@ -187,7 +187,6 @@
             display: flex;
             align-items: center;
             padding: 2rem;
-            background: rgba(0, 0, 0, 0.7);
             transition: all 0.3s;
             flex-direction: row-reverse;
         }
@@ -494,7 +493,7 @@
             <section class="hero-section text-center py-5">
                 <h1 class="display-3 mb-4" style="color: var(--primary-color);">BENVENUTI AL DEL VENTO</h1>
 
-                <div class="food-slider-container" style="background-image: url(img/background.jpg);">
+                <div class="food-slider-container">
                     <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
 
                     <div class="food-slider">
@@ -750,6 +749,39 @@
             if (Math.abs(diff) > 50) {
                 changeSlide(diff > 0 ? -1 : 1);
             }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const lazyImages = document.querySelectorAll("img:not(.no-lazy):not(.logo)"); // استثناء الصور التي تحتوي على 'no-lazy' أو 'logo'
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    const img = entry.target;
+
+                    // التحقق إذا كانت الصورة مخفية
+                    const isHidden = window.getComputedStyle(img).display === "none";
+
+                    if (entry.isIntersecting && !isHidden) {
+                        img.src = img.dataset.src || img.src; // استخدام data-src لو موجود، وإلا يبقى src نفسه
+                        observer.unobserve(img);
+
+                        // تحميل الصورة التالية والسابقة
+                        const next = img.nextElementSibling;
+                        const prev = img.previousElementSibling;
+
+                        if (next && next.tagName === "IMG" && !next.classList.contains("no-lazy") && !next.classList.contains("logo")) {
+                            next.src = next.dataset.src || next.src;
+                            observer.unobserve(next);
+                        }
+                        if (prev && prev.tagName === "IMG" && !prev.classList.contains("no-lazy") && !prev.classList.contains("logo")) {
+                            prev.src = prev.dataset.src || prev.src;
+                            observer.unobserve(prev);
+                        }
+                    }
+                });
+            }, { rootMargin: "200px" });
+
+            lazyImages.forEach(img => observer.observe(img));
         });
     </script>
 </body>
