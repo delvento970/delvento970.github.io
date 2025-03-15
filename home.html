@@ -253,11 +253,37 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.95rem;
+            position: relative;
+            padding: 0;
         }
 
         .header-times i {
             color: var(--secondary-color);
             font-size: 1.2rem;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .header-times {
+                font-size: 10px;
+                padding: 15px;
+                flex-wrap: wrap;
+                max-width: max-content;
+
+            }
+
+            .header-times i {
+                font-size: 20px;
+            }
+        }
+
+        @media (min-width: 992px) {
+
+            .container,
+            .container-lg,
+            .container-md,
+            .container-sm {
+                max-width: max-content;
+            }
         }
 
         /* Mobile */
@@ -988,7 +1014,7 @@
                         <!-- أضف هذا الجزء بعد القائمة وقبل أوقات العمل -->
                         <div class="social-icons ms-lg-3">
                             <!-- TikTok -->
-                            <a href="رابط_تيك_توك" target="_blank" class="social-link">
+                            <a href="https://www.youtube.com/" target="_blank" class="social-link">
                                 <i class="fab fa-tiktok"></i>
                             </a>
 
