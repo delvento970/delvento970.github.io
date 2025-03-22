@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="img/icon del vento.png" type="image/png">
 
     <style>
-        *:focus{
+        *:focus {
             outline: none !important;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
@@ -177,11 +177,11 @@
         /* Slider */
         .food-slider-container {
             position: relative;
-            width: 90%;
+            width: 95%;
             margin: 2rem auto;
             overflow: hidden;
             border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            /*box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);*/
         }
 
         .food-slider {
@@ -881,6 +881,7 @@
     </style>
 
 
+
     <!--pag 3-->
 
     <section class="container3">
@@ -1072,6 +1073,7 @@
     </style>
 
 
+
     <!--pag 4-->
 
     <section class="emergency-section">
@@ -1256,7 +1258,7 @@
         @media (max-width: 992px) {
             .emergency-section {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 0.5rem;
                 text-align: center;
             }
 
@@ -1275,6 +1277,7 @@
 
             .video-thumbnail {
                 width: 100%;
+                height: 100%;
                 max-height: none;
             }
         }
@@ -1303,7 +1306,7 @@
 
             .video-container {
                 max-width: 100%;
-                padding: 0 1rem;
+                height: 100px;
             }
 
             button {
@@ -1312,6 +1315,7 @@
 
             .video-thumbnail {
                 width: 100%;
+                height: 100px;
                 border-radius: 8px;
             }
         }
@@ -1392,7 +1396,340 @@
     </script>
 
 
+
     <!--pag 5-->
+
+    <section class="menu-section5">
+        <header class="menu-header5">
+            <h1 id="menu5">I Nostri Menù</h1>
+            <p class="subtitle5">Scopri i nostri Menù</p>
+        </header>
+
+        <!-- Category Navigation -->
+        <nav class="category-nav5" aria-label="تصنيفات القائمة">
+            <ul class="category-list5">
+                <li class="category-item5 active5" data-category="dolci" role="button" aria-selected="true">Dolci <span
+                        class="count5">(4)</span>
+                </li>
+                <li class="category-item5" data-category="zuppe" role="button" aria-selected="false">Zuppe <span
+                        class="count5">(2)</span>
+                </li>
+                <li class="category-item5" data-category="antipasti" role="button" aria-selected="false">Antipasti <span
+                        class="count5">(3)</span>
+                </li>
+                <li class="category-item5" data-category="piatti" role="button" aria-selected="false">Piatti Principali
+                    <span class="count5">(5)</span>
+                </li>
+                <li class="category-item5" data-category="piatti" role="button" aria-selected="false">Piatti Principali
+                    <span class="count5">(5)</span>
+                </li>
+                <li class="category-item5" data-category="piatti" role="button" aria-selected="false">Piatti Principali
+                    <span class="count5">(5)</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Menu Items Container -->
+        <div class="menu-items-container5">
+            <!-- Dolci -->
+            <article class="special-card5" data-category="dolci">
+                <div class="badge-wrapper5">
+                    <span class="special-badge5">SPECIALE</span>
+                </div>
+                <div class="card-content5">
+                    <div class="text-group5">
+                        <h2 class="dish-title5">Baklava <span class="weight5">(1,8kg)</span></h2>
+                        <p class="ingredients5">Pasta fillo, Noci, Miele</p>
+                    </div>
+                    <div class="price-tag5">€8.00</div>
+                </div>
+            </article>
+
+            <!-- Zuppe -->
+            <article class="special-card5" data-category="zuppe">
+                <div class="card-content5">
+                    <div class="text-group5">
+                        <h2 class="dish-title5">Zuppa Toscana <span class="weight5">(500ml)</span></h2>
+                        <p class="ingredients5">Cavolo nero, Fagioli, Pancetta</p>
+                    </div>
+                    <div class="price-tag5">€6.50</div>
+                </div>
+            </article>
+
+            <!-- Antipasti -->
+            <article class="special-card5" data-category="antipasti">
+                <div class="badge-wrapper5">
+                    <span class="special-badge5">SPECIALE</span>
+                </div>
+                <div class="card-content5">
+                    <div class="text-group5">
+                        <h2 class="dish-title5">Bruschetta <span class="weight5">(3 pezzi)</span></h2>
+                        <p class="ingredients5">Pomodoro, Basilico, Aglio</p>
+                    </div>
+                    <div class="price-tag5">€5.00</div>
+                </div>
+            </article>
+
+            <!-- Piatti Principali -->
+            <article class="special-card5" data-category="piatti">
+                <div class="card-content5">
+                    <div class="text-group5">
+                        <h2 class="dish-title5">Lasagna <span class="weight5">(450g)</span></h2>
+                        <p class="ingredients5">Carne, Besciamella, Parmigiano</p>
+                    </div>
+                    <div class="price-tag5">€10.50</div>
+                </div>
+            </article>
+        </div>
+
+
+        <!-- Footer Button -->
+        <div class="divbutton5">
+            <a href="#">
+                <button class="button" data-text="Awesome">
+                    <span class="actual-text">&nbsp;menù&nbsp;</span>
+                    <span aria-hidden="true" class="hover-text">&nbsp;menù&nbsp;</span>
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <style>
+        :root {
+            --primary-color5: #115d75;
+            --dark-bg5: #1A1A1A;
+            --light-text5: #ffffff;
+            --accent-yellow5: #FFD700;
+            --hover-color5: #28738a;
+            --secondary-text5: #666666;
+        }
+
+        .menu-section5 {
+            font-family: 'Arial', sans-serif;
+            background: var(--light-text5);
+            padding: 2rem 1rem;
+        }
+
+        .menu-header5 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .subtitle5 {
+            color: var(--secondary-text5);
+            font-size: 1.1rem;
+        }
+
+        .category-nav5 {
+            margin: 2rem auto;
+            max-width: 1000px;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+        }
+
+        .category-list5 {
+            display: flex;
+            white-space: nowrap;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category-item5 {
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            background: #adadad44;
+            color: var(--secondary-text5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-item5.active5 {
+            background: var(--primary-color5);
+            color: var(--light-text5);
+        }
+
+        .category-item5:hover {
+            background: var(--hover-color5);
+            color: var(--light-text5);
+        }
+
+        .menu-items-container5 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .special-card5 {
+            position: relative;
+            border: 2px solid var(--primary-color5);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .special-card5:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge-wrapper5 {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+
+        .special-badge5 {
+            background: var(--accent-yellow5);
+            color: var(--dark-bg5);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .price-tag5 {
+            font-size: 1.2rem;
+            color: var(--primary-color5);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .special-card5:hover .price-tag5 {
+            color: var(--hover-color5);
+        }
+
+        /*button5 menu*/
+        .divbutton5{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+        }
+        .button {
+            margin: 0;
+            height: auto;
+            background: transparent;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* button styling */
+        .button {
+            --border-right: 6px;
+            --text-stroke-color: rgb(0, 0, 0);
+            --animation-color: #115d75;
+            --fs-size: 2em;
+            letter-spacing: 3px;
+            text-decoration: none;
+            font-size: var(--fs-size);
+            font-family: "Arial";
+            position: relative;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text-stroke-color);
+        }
+
+        .hover-text {
+            position: absolute;
+            box-sizing: border-box;
+            content: attr(data-text);
+            color: var(--animation-color);
+            width: 0%;
+            inset: 0;
+            border-right: var(--border-right) solid var(--animation-color);
+            overflow: hidden;
+            transition: 0.5s;
+            -webkit-text-stroke: 1px var(--animation-color);
+        }
+
+        .button:hover .hover-text {
+            width: 100%;
+            filter: drop-shadow(0 0 23px var(--animation-color))
+        }
+
+
+
+        .dish-title5 {
+            color: black;
+        }
+
+        .ingredients5 {
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .menu-items-container5 {
+                grid-template-columns: 1fr;
+            }
+
+            .category-item5 {
+                flex: 1 1 45%;
+                text-align: center;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categories = document.querySelectorAll('.category-item5');  // Use category-item5
+            const menuItems = document.querySelectorAll('.special-card5');  // Use special-card5
+            const initialCategory = document.querySelector('.category-item5.active5').dataset.category;  // Use active5
+
+            // Initialize first category
+            menuItems.forEach(item => {
+                item.style.display = 'none';
+            });
+            document.querySelectorAll(`[data-category="${initialCategory}"]`).forEach(item => {
+                item.style.display = 'block';
+            });
+
+            // Handle category clicks
+            categories.forEach(category => {
+                category.addEventListener('click', () => {
+                    categories.forEach(c => {
+                        c.classList.remove('active5');  // Use active5
+                        c.setAttribute('aria-selected', 'false');
+                    });
+
+                    category.classList.add('active5');  // Use active5
+                    category.setAttribute('aria-selected', 'true');
+                    const selectedCategory = category.dataset.category;
+
+                    menuItems.forEach(item => {
+                        item.style.display = item.dataset.category === selectedCategory
+                            ? 'block'
+                            : 'none';
+                    });
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
 
 
 
