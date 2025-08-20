@@ -24,6 +24,394 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/icon del vento.png" type="image/png">
 
+
+
+</head>
+
+<body>
+
+    <!--Welcome-->
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-box">
+            <h1 class="styhallo">Benvenuti <br> Del Vento</h1>
+        </div>
+    </div>
+
+    <style>
+        .styhallo {
+            color: #ffc107;
+            font-size: 3rem;
+            font-family: "Georgia", serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .welcome-box {
+            background: #ffffff6f;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeOut 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(() => {
+                document.getElementById('welcomeOverlay').style.display = 'none';
+            }, 3000);
+        });
+    </script>
+
+
+
+    <!--head-->
+    <div class="lazy-bg no-lazy" style="background-image: url(img/background.jpg);">
+        <header class="header-area">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/Del Vento.png" alt="Del Vento Logo" style="font-size: medium;">
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="#">DEL VENTO</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    IL MENU
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">PIZZA</a></li>
+                                    <!-- (<li><hr class="dropdown-divider"></li>) * لي تقصيم ال(لي جعل كل واحده في قسم)-->
+                                    <li><a class="dropdown-item" href="#">DOLCI</a></li>
+                                    <li><a class="dropdown-item" href="#">BEVANDE</a></li>
+                                    <li><a class="dropdown-item" href="#">ZUPPE</a></li>
+                                    <li><a class="dropdown-item" href="#">ANTIPASTI</a></li>
+                                    <li><a class="dropdown-item" href="#">PIATTI PRINCIPALI</a></li>
+                                    <li><a class="dropdown-item" href="#">PIATTI VEGETARIANI</a></li>
+                                    <li><a class="dropdown-item" href="#">CONTORNI</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                    CHI SIAMO
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#storia">IL RISTORANTE</a></li>
+                                    <li><a class="dropdown-item" href="#team">IL NOSTRO TEAM</a></li>
+                                    <li><a class="dropdown-item" href="#">PRENOTAZIONE</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" href="GALLERIA.html">GALLERIA</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contatti">CONTATTI</a></li>
+                        </ul>
+
+                        <!-- أضف هذا الجزء بعد القائمة وقبل أوقات العمل -->
+                        <div class="social-icons ms-lg-3">
+                            <!-- TikTok -->
+                            <a href="https://www.youtube.com/" target="_blank" class="social-link">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="رابط_انستجرام" target="_blank" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+
+                            <!-- Facebook -->
+                            <a href="رابط_فيسبوك" target="_blank" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/رقم_الهاتف" target="_blank" class="social-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+
+                        <div class="header-times ps-lg-3">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <div>Orario di apertura</div>
+                                <div>10:00 - 15:00 | 18:30 - 00:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="food-slider-containerction text-center py-5">
+
+                <div class="food-slider-container">
+                    <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+
+                    <div class="food-slider">
+                        <div class="food-item">
+                            <img src="img/Pizza.png" class="food-image" alt="Pizza tradizionale">
+                            <div class="food-text">
+                                <h2 class="food-title">PIZZA</h2>
+                                <p class="food-desc">
+                                    Impasto lievitato 24 ore con pomodoro San Marzano DOP,
+                                    mozzarella di bufala campana e basilico fresco
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="food-item">
+                            <img src="img/shish.png" class="food-image" alt="Piatto di carne">
+                            <div class="food-text">
+                                <h2 class="food-title">KOFTA</h2>
+                                <p class="food-desc">
+                                    Carne di agnello macinata al coltello con spezie segrete,
+                                    servita con couscous alle verdure e salsa yogurt
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="food-item">
+                            <img src="img/paklava.png" class="food-image" alt="Dolce tradizionale">
+                            <div class="food-text">
+                                <h2 class="food-title">BAKLAVA</h2>
+                                <p class="food-desc">
+                                    Strati croccanti di pasta fillo con noci miste tostate,
+                                    miele di fiori d'arancio e cardamomo
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HTML للنقاط التي تتحكم في شرائح العرض -->
+                    <div class="slider-controls">
+                        <span class="slider-dot active" data-slide="0"></span>
+                        <span class="slider-dot" data-slide="1"></span>
+                        <span class="slider-dot" data-slide="2"></span>
+                    </div>
+
+                    <!--style & js for slider-->
+                    <style>
+                        .slider-controls {
+                            position: absolute;
+                            bottom: 20px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            display: flex;
+                            gap: 10px;
+                            z-index: 10;
+                        }
+
+                        .slider-dot {
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            background-color: rgba(255, 255, 255, 0.5);
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        }
+
+                        .slider-dot.active {
+                            background-color: #ffc107;
+
+                            width: 15px;
+                            height: 15px;
+                        }
+                    </style>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const slider = document.querySelector('.food-slider');
+                            const sliderDots = document.querySelectorAll('.slider-dot');
+                            const slides = document.querySelectorAll('.food-item');
+                            const slideWidth = 100;
+                            let currentSlide = 0;
+                            sliderDots.forEach((dot, index) => {
+                                dot.addEventListener('click', function () {
+                                    currentSlide = index;
+                                    updateSlider();
+                                });
+                            });
+
+                            function updateSlider() {
+                                slider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+                                sliderDots.forEach((dot, index) => {
+                                    if (index === currentSlide) {
+                                        dot.classList.add('active');
+                                    } else {
+                                        dot.classList.remove('active');
+                                    }
+                                });
+                            }
+
+                            window.changeSlide = function (direction) {
+                                currentSlide = (currentSlide + direction + slides.length) % slides.length;
+                                updateSlider();
+                            };
+
+                            function autoSlide() {
+                                currentSlide = (currentSlide + 1) % slides.length;
+                                updateSlider();
+                            }
+
+                            const slideInterval = setInterval(autoSlide, 5000);
+                            const sliderContainer = document.querySelector('.food-slider-container');
+                            sliderContainer.addEventListener('mouseenter', () => {
+                                clearInterval(slideInterval);
+                            });
+
+                            sliderContainer.addEventListener('mouseleave', () => {
+                                clearInterval(slideInterval);
+                                slideInterval = setInterval(autoSlide, 5000);
+                            });
+                        });
+
+                    </script>
+
+
+                    <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slider = document.querySelector(".food-slider");
+        const slides = document.querySelectorAll(".food-item");
+        const totalSlides = slides.length;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        // Auto-scroll con pausa al hover
+        let autoSlide = setInterval(() => changeSlide(1), 3000);
+        slider.parentElement.addEventListener("mouseenter", () =>
+            clearInterval(autoSlide)
+        );
+        slider.parentElement.addEventListener("mouseleave", () => {
+            autoSlide = setInterval(() => changeSlide(1), 3000);
+        });
+
+        // Gestione swipe per mobile
+        let touchStartX = 0;
+        slider.addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        slider.addEventListener("touchend", (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                changeSlide(diff > 0 ? -1 : 1);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const lazyImages = document.querySelectorAll(".lazy-bg:not(.no-lazy)"); // استثناء الصور التي تحتوي على 'no-lazy' أو 'logo'
+
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        const img = entry.target;
+
+                        // التحقق إذا كانت الصورة مخفية
+                        const isHidden = window.getComputedStyle(img).display === "none";
+
+                        if (entry.isIntersecting && !isHidden) {
+                            img.src = img.dataset.src || img.src; // استخدام data-src لو موجود، وإلا يبقى src نفسه
+                            observer.unobserve(img);
+
+                            // تحميل الصورة التالية والسابقة
+                            const next = img.nextElementSibling;
+                            const prev = img.previousElementSibling;
+
+                            if (
+                                next &&
+                                next.tagName === "IMG" &&
+                                !next.classList.contains("no-lazy") &&
+                                !next.classList.contains("logo")
+                            ) {
+                                next.src = next.dataset.src || next.src;
+                                observer.unobserve(next);
+                            }
+                            if (
+                                prev &&
+                                prev.tagName === "IMG" &&
+                                !prev.classList.contains("no-lazy") &&
+                                !prev.classList.contains("logo")
+                            ) {
+                                prev.src = prev.dataset.src || prev.src;
+                                observer.unobserve(prev);
+                            }
+                        }
+                    });
+                },
+                { rootMargin: "200px" }
+            );
+
+            lazyImages.forEach((img) => observer.observe(img));
+        });
+        function openVideo() {
+            document.getElementById("videoPopup").style.display = "flex";
+            document.getElementById("videoPlayer").play();
+        }
+
+        function closeVideo() {
+            document.getElementById("videoPopup").style.display = "none";
+            document.getElementById("videoPlayer").pause();
+        }
+
+    </script>
+
     <style>
         *:focus {
             outline: none !important;
@@ -42,7 +430,6 @@
             font-family: "Georgia", serif;
             background-color: var(--dark-bg);
             color: var(--text-color);
-            padding-top: 80px;
         }
 
         /* Navbar */
@@ -55,7 +442,6 @@
 
         .navbar-brand {
             font-size: 1.5rem;
-            font-weight: 600;
             color: var(--text-color);
         }
 
@@ -440,331 +826,10 @@
         }
     </style>
 
-</head>
-
-<body>
-
-    <!--head-->
-    <div class="lazy-bg no-lazy" style="background-image: url(img/background.jpg);">
-        <header class="header-area">
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-                <div class="container">
-                    <a class="navbar-brand" href="#">
-                        <img src="img/Del Vento.png" alt="Del Vento Logo" style="font-size: medium;">
-                    </a>
-
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <div class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </button>
-
-
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="#">DEL VENTO</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    IL MENU
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">PIZZA</a></li>
-                                    <!-- (<li><hr class="dropdown-divider"></li>) * لي تقصيم ال(لي جعل كل واحده في قسم)-->
-                                    <li><a class="dropdown-item" href="#">DOLCI</a></li>
-                                    <li><a class="dropdown-item" href="#">BEVANDE</a></li>
-                                    <li><a class="dropdown-item" href="#">ZUPPE</a></li>
-                                    <li><a class="dropdown-item" href="#">ANTIPASTI</a></li>
-                                    <li><a class="dropdown-item" href="#">PIATTI PRINCIPALI</a></li>
-                                    <li><a class="dropdown-item" href="#">PIATTI VEGETARIANI</a></li>
-                                    <li><a class="dropdown-item" href="#">CONTORNI</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    CHI SIAMO
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">IL RISTORANTE</a></li>
-                                    <li><a class="dropdown-item" href="#">IL NOSTRO TEAM</a></li>
-                                    <li><a class="dropdown-item" href="#">PRENOTAZIONE</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item"><a class="nav-link" href="GALLERIA.html">GALLERIA</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#contatti">CONTATTI</a></li>
-                        </ul>
-
-                        <!-- أضف هذا الجزء بعد القائمة وقبل أوقات العمل -->
-                        <div class="social-icons ms-lg-3">
-                            <!-- TikTok -->
-                            <a href="https://www.youtube.com/" target="_blank" class="social-link">
-                                <i class="fab fa-tiktok"></i>
-                            </a>
-
-                            <!-- Instagram -->
-                            <a href="رابط_انستجرام" target="_blank" class="social-link">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-
-                            <!-- Facebook -->
-                            <a href="رابط_فيسبوك" target="_blank" class="social-link">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-
-                            <!-- WhatsApp -->
-                            <a href="https://wa.me/رقم_الهاتف" target="_blank" class="social-link">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </div>
-
-                        <div class="header-times ps-lg-3">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <div>Orario di apertura</div>
-                                <div>10:00 - 15:00 | 18:30 - 00:00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <main class="main-content">
-            <section class="hero-section text-center py-5">
-                <h1 class="display-3 mb-4" style="color: var(--primary-color);">BENVENUTI DEL VENTO</h1>
-
-                <div class="food-slider-container">
-                    <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-
-                    <div class="food-slider">
-                        <div class="food-item">
-                            <img src="img/Pizza.png" class="food-image" alt="Pizza tradizionale">
-                            <div class="food-text">
-                                <h2 class="food-title">PIZZA</h2>
-                                <p class="food-desc">
-                                    Impasto lievitato 24 ore con pomodoro San Marzano DOP,
-                                    mozzarella di bufala campana e basilico fresco
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="food-item">
-                            <img src="img/shish.png" class="food-image" alt="Piatto di carne">
-                            <div class="food-text">
-                                <h2 class="food-title">KOFTA</h2>
-                                <p class="food-desc">
-                                    Carne di agnello macinata al coltello con spezie segrete,
-                                    servita con couscous alle verdure e salsa yogurt
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="food-item">
-                            <img src="img/paklava.png" class="food-image" alt="Dolce tradizionale">
-                            <div class="food-text">
-                                <h2 class="food-title">BAKLAVA</h2>
-                                <p class="food-desc">
-                                    Strati croccanti di pasta fillo con noci miste tostate,
-                                    miele di fiori d'arancio e cardamomo
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- HTML للنقاط التي تتحكم في شرائح العرض -->
-                    <div class="slider-controls">
-                        <span class="slider-dot active" data-slide="0"></span>
-                        <span class="slider-dot" data-slide="1"></span>
-                        <span class="slider-dot" data-slide="2"></span>
-                    </div>
-
-                    <!--style & js for slider-->
-                    <style>
-                        .slider-controls {
-                            position: absolute;
-                            bottom: 20px;
-                            left: 50%;
-                            transform: translateX(-50%);
-                            display: flex;
-                            gap: 10px;
-                            z-index: 10;
-                        }
-
-                        .slider-dot {
-                            width: 12px;
-                            height: 12px;
-                            border-radius: 50%;
-                            background-color: rgba(255, 255, 255, 0.5);
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-                        }
-
-                        .slider-dot.active {
-                            background-color: #ffc107;
-
-                            width: 15px;
-                            height: 15px;
-                        }
-                    </style>
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            const slider = document.querySelector('.food-slider');
-                            const sliderDots = document.querySelectorAll('.slider-dot');
-                            const slides = document.querySelectorAll('.food-item');
-                            const slideWidth = 100;
-                            let currentSlide = 0;
-                            sliderDots.forEach((dot, index) => {
-                                dot.addEventListener('click', function () {
-                                    currentSlide = index;
-                                    updateSlider();
-                                });
-                            });
-
-                            function updateSlider() {
-                                slider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
-                                sliderDots.forEach((dot, index) => {
-                                    if (index === currentSlide) {
-                                        dot.classList.add('active');
-                                    } else {
-                                        dot.classList.remove('active');
-                                    }
-                                });
-                            }
-
-                            window.changeSlide = function (direction) {
-                                currentSlide = (currentSlide + direction + slides.length) % slides.length;
-                                updateSlider();
-                            };
-
-                            function autoSlide() {
-                                currentSlide = (currentSlide + 1) % slides.length;
-                                updateSlider();
-                            }
-
-                            const slideInterval = setInterval(autoSlide, 5000);
-                            const sliderContainer = document.querySelector('.food-slider-container');
-                            sliderContainer.addEventListener('mouseenter', () => {
-                                clearInterval(slideInterval);
-                            });
-
-                            sliderContainer.addEventListener('mouseleave', () => {
-                                clearInterval(slideInterval);
-                                slideInterval = setInterval(autoSlide, 5000);
-                            });
-                        });
-
-                    </script>
-
-
-                    <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <script>
-        let currentSlide = 0;
-        const slider = document.querySelector(".food-slider");
-        const slides = document.querySelectorAll(".food-item");
-        const totalSlides = slides.length;
-
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-
-        function changeSlide(direction) {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            updateSlider();
-        }
-
-        // Auto-scroll con pausa al hover
-        let autoSlide = setInterval(() => changeSlide(1), 3000);
-        slider.parentElement.addEventListener("mouseenter", () =>
-            clearInterval(autoSlide)
-        );
-        slider.parentElement.addEventListener("mouseleave", () => {
-            autoSlide = setInterval(() => changeSlide(1), 3000);
-        });
-
-        // Gestione swipe per mobile
-        let touchStartX = 0;
-        slider.addEventListener("touchstart", (e) => {
-            touchStartX = e.touches[0].clientX;
-        });
-
-        slider.addEventListener("touchend", (e) => {
-            const touchEndX = e.changedTouches[0].clientX;
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-                changeSlide(diff > 0 ? -1 : 1);
-            }
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const lazyImages = document.querySelectorAll(".lazy-bg:not(.no-lazy)"); // استثناء الصور التي تحتوي على 'no-lazy' أو 'logo'
-
-            const observer = new IntersectionObserver(
-                (entries, observer) => {
-                    entries.forEach((entry) => {
-                        const img = entry.target;
-
-                        // التحقق إذا كانت الصورة مخفية
-                        const isHidden = window.getComputedStyle(img).display === "none";
-
-                        if (entry.isIntersecting && !isHidden) {
-                            img.src = img.dataset.src || img.src; // استخدام data-src لو موجود، وإلا يبقى src نفسه
-                            observer.unobserve(img);
-
-                            // تحميل الصورة التالية والسابقة
-                            const next = img.nextElementSibling;
-                            const prev = img.previousElementSibling;
-
-                            if (
-                                next &&
-                                next.tagName === "IMG" &&
-                                !next.classList.contains("no-lazy") &&
-                                !next.classList.contains("logo")
-                            ) {
-                                next.src = next.dataset.src || next.src;
-                                observer.unobserve(next);
-                            }
-                            if (
-                                prev &&
-                                prev.tagName === "IMG" &&
-                                !prev.classList.contains("no-lazy") &&
-                                !prev.classList.contains("logo")
-                            ) {
-                                prev.src = prev.dataset.src || prev.src;
-                                observer.unobserve(prev);
-                            }
-                        }
-                    });
-                },
-                { rootMargin: "200px" }
-            );
-
-            lazyImages.forEach((img) => observer.observe(img));
-        });
-        function openVideo() {
-            document.getElementById("videoPopup").style.display = "flex";
-            document.getElementById("videoPlayer").play();
-        }
-
-        function closeVideo() {
-            document.getElementById("videoPopup").style.display = "none";
-            document.getElementById("videoPlayer").pause();
-        }
-
-    </script>
-
 
 
     <!--pag 4-->
-   
+
     <section class="emergency-section" id="contatti">
         <div class="hotline-container">
             <div class="hotline-content">
@@ -777,9 +842,9 @@
                     333 439 6447
                 </a>
                 <br>
-                <a href="mailto:info@delventoristorante.it" class="hotline-email"
-                    style="display:inline-block;margin-top:12px;font-size:1.2rem;color:#fff;text-decoration:none;font-weight:700;">
-                    <i class="fas fa-envelope" style="margin-right:7px;color:#ffffff;"></i>info@delventoristorante.it
+                <a href="mailto:info@delventoristorante.it" class="hotline-email">
+                    <i class="fas fa-envelope"></i>
+                    info@delventoristorante.it
                 </a>
             </div>
         </div>
@@ -876,6 +941,34 @@
             color: #115d75;
             transform: translateY(-3px);
         }
+
+        .hotline-email {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 350;
+            letter-spacing: 1px;
+            padding: 15px 30px;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+
+        .fas.fa-envelope {
+            margin-right: 7px;
+            color: #ffffff;
+            display: inline-block;
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 350;
+            letter-spacing: 1px;
+            border-radius: auto;
+            transition: all 0.3s ease;
+        }
+
 
         /* صندوق الفيديو (الصورة المصغرة + زر التشغيل) */
         .video-container {
@@ -988,6 +1081,12 @@
                 margin: 1rem 0;
             }
 
+            .hotline-email {
+                font-size: 0.9rem;
+                display: block;
+                margin-top: 0.5rem;
+            }
+
             .icon-wrapper {
                 font-size: 2rem;
                 padding: 0.5rem;
@@ -1094,7 +1193,7 @@
     <!--pag 5-->
     <section class="menu-section5">
         <header class="menu-header5">
-            <h1 id="menu5">I Nostri Menù</h1>
+            <h2 id="menu5">I Nostri Menù</h2>
             <p class="subtitle5">Scopri i nostri Menù</p>
         </header>
 
@@ -1574,13 +1673,13 @@
 
     <!--pag 3-->
 
-    <section class="container3">
+    <section class="container3" id="storia">
         <div class="image">
             <img src="img/la storia.jpg" alt="Tavolo del ristorante">
         </div>
         <div class="content">
             <div class="tag">LA STORIA</div>
-            <h1>Lasciati rapire dal gusto dell'eccellenza</h1>
+            <h2>Lasciati rapire dal gusto dell'eccellenza</h2>
             <p class="textstoria">
                 Il Ristorante siriano Del Vento, situato a Milano, è circondato dal verde, nella pace e tranquillità di
                 un parco adornato da fiori e alberi giganti, lontano dal caos e dallo smog cittadino. Specializzato in
@@ -1665,7 +1764,7 @@
             border-top: 10px solid var(--primary-color);
         }
 
-        h1 {
+        h2 {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 25px;
@@ -1697,7 +1796,7 @@
                 padding: 30px 15px;
             }
 
-            h1 {
+            h2 {
                 font-size: 2rem;
             }
 
@@ -1733,7 +1832,7 @@
                 border-width: 8px;
             }
 
-            h1 {
+            h2 {
                 font-size: 1.8rem;
             }
 
@@ -1752,7 +1851,7 @@
                 padding: 8px 16px;
             }
 
-            h1 {
+            h2 {
                 font-size: 1.6rem;
             }
 
@@ -1764,7 +1863,396 @@
 
 
 
+    <!--Restaurant Team Page-->
+    <div id="restaurant-main-container" class="restaurant-container">
+        <header id="team-page-header" class="restaurant-header">
+            <h2 class="main-team-title" id="team">La Nostra Squadra</h2>
+            <p id="team-subtitle">Incontra la nostra squadra di professionisti eccezionali</p>
+        </header>
+
+        <section id="team-members-section" class="restaurant-team-section">
+            <div id="team-grid-layout" class="restaurant-team-grid">
+
+                <!-- Sameh Team Member -->
+                <div id="sameh-team-member" class="restaurant-team-member" data-member="sameh">
+                    <div class="restaurant-member-img">
+                        <img id="sameh-avatar"
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                            alt="Sameh - Executive Chef" class="restaurant-sameh-img">
+                    </div>
+                    <div class="restaurant-member-info">
+                        <h3 id="sameh-name" class="member-name">Sameh</h3>
+                        <p id="sameh-role" class="member-role">CEO & Executive Chef</p>
+                        <div id="sameh-social-links" class="restaurant-social-links">
+                            <a href="#" class="social-link-twitter" aria-label="Twitter Sameh">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link-linkedin" aria-label="LinkedIn Sameh">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link-github" aria-label="GitHub Sameh">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Christina Team Member -->
+                <div id="christina-team-member" class="restaurant-team-member" data-member="christina">
+                    <div class="restaurant-member-img">
+                        <img id="christina-avatar"
+                            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80"
+                            alt="Christina - Master Pastry Chef" class="restaurant-christina-img">
+                    </div>
+                    <div class="restaurant-member-info">
+                        <h3 id="christina-name" class="member-name">Christina Grimmie</h3>
+                        <p id="christina-role" class="member-role">Master Pastry Chef</p>
+                        <div id="christina-social-links" class="restaurant-social-links">
+                            <a href="#" class="social-link-twitter" aria-label="Twitter Christina">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link-linkedin" aria-label="LinkedIn Christina">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link-instagram" aria-label="Instagram Christina">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bella Team Member -->
+                <div id="bella-team-member" class="restaurant-team-member" data-member="bella">
+                    <div class="restaurant-member-img">
+                        <img id="bella-avatar"
+                            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80"
+                            alt="Bella - Burger Specialist Chef" class="restaurant-bella-img">
+                    </div>
+                    <div class="restaurant-member-info">
+                        <h3 id="bella-name" class="member-name">Bella</h3>
+                        <p id="bella-role" class="member-role">Burger Specialist Chef</p>
+                        <div id="bella-social-links" class="restaurant-social-links">
+                            <a href="#" class="social-link-twitter" aria-label="Twitter Bella">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link-linkedin" aria-label="LinkedIn Bella">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link-facebook" aria-label="Facebook Bella">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <style id="restaurant-team-styles">
+        :root {
+            --restaurant-primary: #ffc107;
+            --restaurant-secondary: #6c757d;
+            --restaurant-bg: #333232;
+            --restaurant-text: #ffffff;
+            --restaurant-card: #444444;
+            --restaurant-hover: #555555;
+            --restaurant-transition: all 0.3s ease;
+            --restaurant-radius: 15px;
+            --restaurant-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-team-title {
+            font-size: 3rem;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #restaurant-team-body {
+            background: linear-gradient(135deg, var(--restaurant-bg) 0%, #2d2d2d 100%);
+            color: var(--restaurant-text);
+            line-height: 1.6;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .restaurant-container {
+            margin: auto;
+            padding: 20px;
+            background-color: #115d75;
+        }
+
+        .restaurant-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff758c, #6a11cb, #ff930f);
+            border-radius: var(--restaurant-radius) var(--restaurant-radius) 0 0;
+        }
+
+        #team-subtitle {
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .restaurant-team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 30px;
+        }
+
+        .restaurant-team-member {
+            background: var(--restaurant-card);
+            border-radius: var(--restaurant-radius);
+            overflow: hidden;
+            box-shadow: var(--restaurant-shadow);
+            transition: var(--restaurant-transition);
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .restaurant-team-member:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: var(--restaurant-hover);
+        }
+
+        .restaurant-member-img {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .restaurant-member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--restaurant-transition);
+        }
+
+        .restaurant-team-member:hover .restaurant-member-img img {
+            transform: scale(1.1);
+        }
+
+        .restaurant-member-info {
+            padding: 25px 20px;
+            background-color: #115d75;
+        }
+
+        .member-name {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            color: var(--restaurant-primary);
+        }
+
+        .member-role {
+            font-size: 1.1rem;
+            color: var(--restaurant-secondary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .member-role::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--restaurant-primary);
+        }
+
+        .restaurant-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .restaurant-social-links a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--restaurant-text);
+            font-size: 1.3rem;
+            transition: var(--restaurant-transition);
+            text-decoration: none;
+        }
+
+        .social-link-twitter {
+            background: rgba(29, 161, 242, 0.2);
+        }
+
+        .social-link-twitter:hover {
+            background: #1da1f2;
+            transform: translateY(-5px);
+        }
+
+        .social-link-linkedin {
+            background: rgba(0, 119, 181, 0.2);
+        }
+
+        .social-link-linkedin:hover {
+            background: #0077b5;
+            transform: translateY(-5px);
+        }
+
+        .social-link-github {
+            background: rgba(51, 51, 51, 0.2);
+        }
+
+        .social-link-github:hover {
+            background: #333;
+            transform: translateY(-5px);
+        }
+
+        .social-link-instagram {
+            background: rgba(225, 48, 108, 0.2);
+        }
+
+        .social-link-instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            transform: translateY(-5px);
+        }
+
+        .social-link-facebook {
+            background: rgba(24, 119, 242, 0.2);
+        }
+
+        .social-link-facebook:hover {
+            background: #1877f2;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .restaurant-team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #main-team-title {
+                font-size: 2.5rem;
+            }
+
+            #team-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .restaurant-team-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .restaurant-header {
+                padding: 30px 20px;
+            }
+
+            .restaurant-member-img {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #main-team-title {
+                font-size: 2.2rem;
+            }
+
+            .restaurant-container {
+                padding: 15px;
+            }
+
+            .member-name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+
+    <script id="restaurant-team-script">
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Get all team member elements
+            const teamMembers = document.querySelectorAll('.restaurant-team-member');
+
+            // Add enhanced hover effects
+            teamMembers.forEach(function (member) {
+                member.addEventListener('mouseenter', function () {
+                    this.style.transition = 'all 0.4s ease';
+                });
+
+                member.addEventListener('mouseleave', function () {
+                    this.style.transition = 'all 0.3s ease';
+                });
+
+                // Add click effect
+                member.addEventListener('click', function () {
+                    const memberName = this.querySelector('.member-name').textContent;
+                    console.log('Clicked on team member: ' + memberName);
+                });
+            });
+
+            // Smooth appearance animation
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const appearanceObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animation to team members
+            teamMembers.forEach(function (member) {
+                member.style.opacity = '0';
+                member.style.transform = 'translateY(30px)';
+                member.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                appearanceObserver.observe(member);
+            });
+
+            // Social links hover sound effect simulation
+            const socialLinks = document.querySelectorAll('.restaurant-social-links a');
+            socialLinks.forEach(function (link) {
+                link.addEventListener('mouseenter', function () {
+                    // Visual feedback only
+                    this.style.transform = 'translateY(-5px) scale(1.1)';
+                });
+
+                link.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+        });
+    </script>
+
+
+
     <!--pag 7-->
+
     <section class="hero7-section">
         <div class="hero7-map-container">
             <iframe
@@ -1790,16 +2278,16 @@
                     <span>333 439 6447</span>
                 </div>
                 <div class="hero7-contact-item">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope" style="color: #ffd700;"></i>
                     <span>info@delventoristorante.it</span>
                 </div>
             </div>
             <div class="hero7-social-links">
                 <!-- تم استبدال الروابط بروابط حقيقية كمثال -->
-                <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://tiktok.com/yourpage" target="_blank"><i class="fab fa-tiktok"></i></a>
                 <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://whatsapp.com/yourpage" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
             <div class="hero7-links-section">
                 <ul class="hero7-main-links">
@@ -1808,9 +2296,11 @@
                 </ul>
             </div>
             <div class="hero7-footer-section">
-                <p style="margin:0 0 8px 0;">Il Ristorante siriano Del Vento, situato a Milano, è circondato dal verde
+                <p style="margin:0 0 8px 0;">Il Ristorante siriano Del Vento, situato a Milano, è circondato dal
+                    verde
                 </p>
-                <p style="margin:0;">Copyright © 2024. All rights reserved by Del Vento | Developed by Italia Internet
+                <p style="margin:0;">Copyright © 2024. All rights reserved by Del Vento | Developed by Italia
+                    Internet
                     Services (IIS)</p>
             </div>
         </div>
